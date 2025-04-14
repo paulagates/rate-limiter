@@ -1,6 +1,6 @@
 # 🧱 rate-limiter
 
-Rate limiter desenvolvido em Go com suporte a controle por IP e token, utilizando Redis para armazenamento.
+Rate limiter desenvolvido em Go com controle por IP e token, utilizando Redis para armazenamento.
 
 ## Configuração
 
