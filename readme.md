@@ -1,14 +1,23 @@
 # 🧱 rate-limiter
 
-Rate limiter desenvolvido em Go com suporte a controle por IP e token, utilizando Redis para armazenamento.
+Rate limiter desenvolvido em Go com controle por IP e token, utilizando Redis para armazenamento.
 
-## Funcionalidades
+### Como o Rate Limiter Funciona
 
-- Limitação de requisições por IP e por token.
-- Armazenamento de contadores e bloqueios com Redis.
-- Configuração via variáveis de ambiente.
-- Suporte a benchmark de carga com goroutines.
-- Pronto para execução via Docker e Docker Compose.
+O rate limiter controla o número de requisições feitas por um identificador (IP ou token) dentro de um intervalo de tempo. Ele usa o Redis para:
+
+- **Contar** quantas requisições foram feitas.
+- **Bloquear** temporariamente quem ultrapassar o limite.
+
+#### Lógica Interna
+
+1. Ao receber uma requisição:
+   - O identificador (IP ou token) é extraído.
+   - O Redis incrementa o contador associado a ele.
+   - Se for a primeira requisição, uma expiração curta (ex: 1 segundo) é aplicada.
+2. Se o contador ultrapassar o limite:
+   - O identificador é **bloqueado** no Redis por um tempo determinado.
+   - Requisições seguintes são negadas até o tempo expirar.
 
 ## Configuração
 
