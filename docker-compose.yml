@@ -20,7 +20,7 @@ services:
   benchmark:
     build:
       context: .
-      dockerfile: Dockerfile.benchmark
+      dockerfile: Dockerfile.test
     container_name: benchmark-tester
     depends_on:
       - redis
@@ -31,6 +31,19 @@ services:
       - RATE_LIMIT_TOKEN_DEFAULT=5
       - BLOCK_DURATION_TOKEN=10
     command: ["go", "test", "-bench=.", "./test"]
+
+  tester:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    container_name: tester
+    depends_on:
+      - redis
+    environment:
+      - REDIS_ADDR=redis:6379
+      - REDIS_PASSWORD=
+      - REDIS_DB=0
+    command: ["go", "test", "./test"]
 
 volumes:
   redis-data:

@@ -53,7 +53,11 @@ In Go We Trust!
 you have reached the maximum number of requests or actions allowed within a certain time frame
 ```
 
+## Testes
 
+```
+docker compose run --rm tester
+```
 ## Benchmark
 
 ```
