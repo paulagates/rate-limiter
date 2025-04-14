@@ -2,14 +2,6 @@
 
 Rate limiter desenvolvido em Go com suporte a controle por IP e token, utilizando Redis para armazenamento.
 
-## Funcionalidades
-
-- Limitação de requisições por IP e por token.
-- Armazenamento de contadores e bloqueios com Redis.
-- Configuração via variáveis de ambiente.
-- Suporte a benchmark de carga com goroutines.
-- Pronto para execução via Docker e Docker Compose.
-
 ## Configuração
 
 Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
