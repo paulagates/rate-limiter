@@ -22,7 +22,7 @@ func NewRedisStorage(addr, password string, db int) (*RedisStorage, error) {
 	})
 	_, err := client.Ping(context.Background()).Result()
 	if err != nil {
-		return nil, fmt.Errorf("erro ao conectar ao Redis: %v", err)
+		return nil, fmt.Errorf("error connecting to Redis: %v", err)
 	}
 	return &RedisStorage{client: client}, nil
 }
@@ -35,7 +35,7 @@ func (r *RedisStorage) Increment(ctx context.Context, key string, expiration tim
 	if val == 1 {
 		err := r.client.Expire(ctx, key, expiration).Err()
 		if err != nil {
-			log.Println("Erro ao definir expiração:", err)
+			log.Println("Erro defining expiration:", err)
 		}
 	}
 	return int(val), nil

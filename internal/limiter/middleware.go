@@ -1,6 +1,7 @@
 package limiter
 
 import (
+	"log"
 	"net/http"
 	"strings"
 
@@ -14,7 +15,7 @@ func RateLimiterMiddleware(limiter *Limiter, config *config.Config) func(http.Ha
 			token := r.Header.Get("API_KEY")
 			var identifier string
 			var isToken bool
-
+			log.Println("API_KEY:", token)
 			if token != "" {
 				identifier = token
 				isToken = true

@@ -22,7 +22,7 @@ type Config struct {
 func Load() *Config {
 	err := godotenv.Load()
 	if err != nil {
-		log.Println(".env não carregado, usando variáveis do sistema")
+		log.Println(".env not loaded, using system variables.")
 	}
 
 	return &Config{

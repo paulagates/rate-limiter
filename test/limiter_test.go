@@ -53,9 +53,7 @@ func TestAllowRequest_TokenWithinLimit(t *testing.T) {
 	ctx := context.Background()
 	token := "test-token"
 
-	// Simula: não está bloqueado
 	storage.On("IsBlocked", ctx, "block:"+token).Return(false, nil)
-	// Simula: contador retorna 3 (menor que o limite)
 	storage.On("Increment", ctx, token, time.Second).Return(3, nil)
 
 	allowed, err := l.AllowRequest(ctx, token, true)
